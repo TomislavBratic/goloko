@@ -1,0 +1,86 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: ./www/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./www/web:/usr/src/app/
+      - /usr/src/app/node_modules/
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - default
+
+  api:
+    build:
+      context: ./www/api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./www/api:/app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/goloko
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_FLYWAY_ENABLED: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --fail http://localhost:8080/actuator/health || exit 1" ]
+      interval: 10s
+      retries: 5
+      timeout: 3s
+      start_period: 15s
+
+  db:
+    image: mariadb:10.10
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: goloko
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD-SHELL", "mariadb -uroot -proot -e 'SELECT 1 FROM mysql.db' || exit 1" ]
+      interval: 10s
+      retries: 10
+      timeout: 5s
+      start_period: 20s
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+      UPLOAD_LIMIT: 1280000000
+    networks:
+      - default
+
+volumes:
+  persistent:
+
+
+networks:
+  default:

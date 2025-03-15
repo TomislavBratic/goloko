@@ -1,0 +1,11 @@
+# Ignore compiled files and build artifacts
+api/target/
+build/
+
+
+
+# Ignore log files
+logs/
+*.log
+
+
