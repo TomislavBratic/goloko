@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afac3b16-2b06-4b41-a93b-d1aa3aa7b18e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/www/api/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/api/src/main/java/com/example/goloko/controller/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/api/src/main/java/com/example/goloko/service/GreetingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/www/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/www/api/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/www/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/com/example/exercises/ExercisesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/api/src/main/java/com/example/goloko/GoLokoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/main/java/com/example/exercises/controller/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/test/java/com/example/exercises/ExercisesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/www/api/src/test/java/com/example/goloko/GoLokoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/www" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -56,8 +47,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "//wsl$/Ubuntu-20.04/home/tomislav/projects/GoLoko/www",
+    "last_opened_file_path": "//wsl$/Ubuntu-20.04/home/tomislav/projects/Goloko-app/www/api",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
