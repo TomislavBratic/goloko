@@ -1,0 +1,14 @@
+# Ignore compiled files and build artifacts
+api/target/
+build/
+
+#intellij files
+.idea/
+.iml
+
+
+# Ignore log files
+logs/
+*.log
+
+
