@@ -1,6 +1,8 @@
 import './App.css'
 import HomePage from "./assets/components/HomePage"
+import Login from "./assets/components/Login"
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -10,9 +12,14 @@ function App() {
     setIsDark(!isDark);
   }
   return (
-    <div className='bg-white min-h-screen'>
-      <HomePage toggleDarkMode={toggleDarkMode} />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<Login />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
