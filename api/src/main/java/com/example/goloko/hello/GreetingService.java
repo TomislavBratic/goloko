@@ -1,4 +1,4 @@
-package com.example.goloko.service;
+package com.example.goloko.hello;
  import org.springframework.stereotype.Service;
 
  @Service

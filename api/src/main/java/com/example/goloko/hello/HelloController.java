@@ -1,6 +1,5 @@
-package com.example.goloko.controller;
+package com.example.goloko.hello;
 
-import com.example.goloko.service.GreetingService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
