@@ -1,7 +1,8 @@
-import './App.css'
-import HomePage from "./assets/components/HomePage"
-import Login from "./assets/components/Login"
-import { useState } from 'react'
+import './App.css';
+import HomePage from "./components/HomePage";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -10,17 +11,20 @@ function App() {
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
     setIsDark(!isDark);
-  }
+  };
+
   return (
     <BrowserRouter>
-      <div>
+      <div
+      >
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
+           <Route path='/register' element={<Register />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;

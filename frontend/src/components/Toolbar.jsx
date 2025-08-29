@@ -1,9 +1,9 @@
 const Toolbar = ({toggleDarkMode}) => {
     return (
-        <header className="w-full p-2 max-h-12 flex justify-between items-center bg-amber-600 shadow-md">
+        <header className="w-full p-2 max-h-12 flex justify-between items-center bg-[#E3A933] shadow-md">
             <div className="flex items-center">
-            <img src="../../logo.svg" className="w-15 h-15 mr-2 hover:scale-110 transition:300"></img>
-                <h1 className="text-xl font-bold text-gray-200 dark:text-gray-200"> Goloko</h1>
+                <img src="/centered_bird_logo.png" className="w-35 h-35 mt-6 hover:scale-110 transition:300"></img>
+                 <img src="/goloko-logo-without-bg.png" className="w-35 h-35 hover:scale-110 transition:300"></img>
             </div>
             <nav className="space-x-4">
                 <a href="#" className="text-gray-100 hover:text-gray-300 transition">Home</a>

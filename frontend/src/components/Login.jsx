@@ -3,17 +3,21 @@ import { faGoogle, faFacebook, faGithub, faTwitter } from '@fortawesome/free-bra
 
 const Login = () => {
     return (
-     <div className="flex items-center justify-center min-h-screen bg-amber-200">
+     <div className="flex items-center justify-center min-h-screen  bg-[url('/background_pin.jpg')] bg-cover bg-center bg-no-repeat">
        <div className="w-full max-w-7xl bg-white shadow-lg flex rounded-xl overflow-hidden">
         <div className="w-1/2 hidden md:block">
         <img
-          src="/login_image.png"
+          src="/login_image_new_with_cloud.jpg"
           alt="Login visual"
           className="w-full h-full object-cover"
             />
           </div>
           <div className="w-full md:w-1/2 flex flex-col justify-center p-8">
-            <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+            
+            <div className='flex justify-center items-center'>
+            <img src="/login_sign_without_bg.png" className="w-48 h-48 hover:scale:110 transition:300"></img>
+            </div>
+
             <input className=" p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Username or Email"></input>
             <input className="p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Password"></input>
 
@@ -48,7 +52,7 @@ const Login = () => {
               </button>
             </div>
             <div className='flex justify-center mt-4'>
-              <span className='text-gray-500 text-sm '>Don't have an account?<a href="#" className='text-blue-500 hover:underline ml-1'>Register now</a></span>
+              <span className='text-gray-500 text-sm '>Don't have an account?<a href="/register" className='text-blue-500 hover:underline ml-1'>Register now</a></span>
             </div>
           </div>
           
