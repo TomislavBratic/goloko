@@ -25,7 +25,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .api:/app
+      - ./api:/app
     environment:
       SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/goloko
       SPRING_DATASOURCE_USERNAME: root
