@@ -1,11 +1,14 @@
 package com.example.goloko.user;
 
+import com.example.goloko.user.application.UserService;
+import com.example.goloko.user.domain.User;
+import com.example.goloko.user.web.request.CreateUserRequest;
+import com.example.goloko.user.web.response.UserResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -13,7 +16,7 @@ public class UserController {
     private final UserService userService;
 
 
-    public UserController(UserRepository userRepository, UserService userService)
+    public UserController(UserService userService)
     {
         this.userService = userService;
     }

@@ -1,4 +1,4 @@
-package com.example.goloko.user;
+package com.example.goloko.user.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

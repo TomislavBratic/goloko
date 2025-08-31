@@ -1,5 +1,9 @@
-package com.example.goloko.user;
+package com.example.goloko.user.application;
 
+import com.example.goloko.user.domain.Role;
+import com.example.goloko.user.domain.User;
+import com.example.goloko.user.domain.UserRepository;
+import com.example.goloko.user.web.request.CreateUserRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

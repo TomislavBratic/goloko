@@ -1,4 +1,6 @@
-package com.example.goloko.user;
+package com.example.goloko.user.web.response;
+
+import com.example.goloko.user.domain.User;
 
 public record UserResponse(
         String email,
