@@ -6,6 +6,8 @@ import com.example.goloko.subscriptionplan.web.request.CreateSubscriptionPlanReq
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class SubscriptionPlanService {
 SubscriptionPlanRepository subscriptionPlanRepository;
@@ -25,4 +27,8 @@ SubscriptionPlanRepository subscriptionPlanRepository;
         return subscriptionPlanRepository.save(subscriptionPlan);
     }
 
+    public Optional<SubscriptionPlan> get(Long id)
+    {
+        return subscriptionPlanRepository.findById(id);
+    }
 }

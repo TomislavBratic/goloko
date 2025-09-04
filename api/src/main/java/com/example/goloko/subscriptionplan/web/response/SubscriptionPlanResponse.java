@@ -4,14 +4,14 @@ import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
 
 import java.math.BigDecimal;
 
-public record CreateSubscriptionPlanResponse(
+public record SubscriptionPlanResponse(
         String name,
         Integer maxLocations,
         Integer durationMonths,
         BigDecimal price
 ) {
-    public static CreateSubscriptionPlanResponse from(SubscriptionPlan p){
-        return new CreateSubscriptionPlanResponse(p.getName(),p.getMaxLocations(), p.getDurationMonths(), p.getPrice());
+    public static SubscriptionPlanResponse from(SubscriptionPlan p){
+        return new SubscriptionPlanResponse(p.getName(),p.getMaxLocations(), p.getDurationMonths(), p.getPrice());
     }
 
 }

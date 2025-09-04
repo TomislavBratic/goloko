@@ -3,13 +3,17 @@ package com.example.goloko.client.application;
 import com.example.goloko.client.domain.Client;
 import com.example.goloko.client.domain.ClientRepository;
 import com.example.goloko.client.web.request.CreateClientRequest;
+import com.example.goloko.client.web.response.ClientResponse;
 import com.example.goloko.exceptions.NotFoundException;
 import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
 import com.example.goloko.subscriptionplan.domain.SubscriptionPlanRepository;
 import com.example.goloko.user.domain.User;
 import com.example.goloko.user.domain.UserRepository;
-import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -36,5 +40,10 @@ public class ClientService {
         client.setSubscriptionPlan(subscriptionPlan);
         client.setVerificationText(request.verificationNotes());
         return clientRepository.save(client);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<ClientResponse> get(Long id){
+        return clientRepository.findById(id).map(ClientResponse::from);
     }
 }
