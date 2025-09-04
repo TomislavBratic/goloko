@@ -2,25 +2,26 @@ package com.example.goloko.client.domain;
 import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
 import com.example.goloko.user.domain.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "clients", uniqueConstraints =@UniqueConstraint(name = "uq_client_user_id",columnNames = "user_id"))
 public class Client {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     public Long id;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id",nullable = false,
     foreignKey = @ForeignKey(name = "fk_clients_user"))
     public User user;
     @Column(nullable = false,name = "business_name",length = 255)
+    @ToString.Include
     public String businessName;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false,name = "subscription_status", length = 20)

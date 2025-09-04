@@ -2,16 +2,15 @@ package com.example.goloko.subscriptionplan.domain;
 
 import com.example.goloko.client.domain.Client;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -19,10 +18,12 @@ import java.util.Set;
 public class SubscriptionPlan {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
     @OneToMany(mappedBy = "subscriptionPlan",fetch = FetchType.LAZY)
     private Set<Client> client = new HashSet<>();
     @Column(name = "name",length = 255,nullable = false)
+    @ToString.Include
     private String name;
     @Column(name = "max_locations",nullable = false)
     private Integer maxLocations;

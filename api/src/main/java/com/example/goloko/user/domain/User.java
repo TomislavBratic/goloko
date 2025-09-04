@@ -2,13 +2,12 @@ package com.example.goloko.user.domain;
 
 import com.example.goloko.client.domain.Client;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -16,14 +15,17 @@ import java.time.Instant;
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // for MariaDB insertion is Identity, that means hibernate doesn't know id before insertion, opposite of Sequence
+    @EqualsAndHashCode.Include
     private Long id;
     @Column(nullable = false,length = 255)
     private String email;
     @Column(name = "password_hash", nullable = false,length = 255)
     private String passwordHash;
     @Column(name="first_name", nullable = false,length = 100)
+    @ToString.Include
     private String firstName;
     @Column(name = "last_name", nullable = false, length = 100)
+    @ToString.Include
     private String lastName;
     @Enumerated(EnumType.STRING) //we must put string to use names of enums, not ordinal numbers, since enums are counted array of constants
     @Column(nullable = false,length = 20)
