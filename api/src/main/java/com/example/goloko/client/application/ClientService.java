@@ -38,11 +38,9 @@ public class ClientService {
         SubscriptionPlan subscriptionPlan = subscriptionPlanRepository.findById(request.subscriptionPlanId())
                 .orElseThrow(() -> new NotFoundException("Subscription plan not found"));
 
-        Client client = new Client();
+        Client client = clientMapper.toEntity(request);
         client.setUser(user);
-        client.setBusinessName(request.businessName());
         client.setSubscriptionPlan(subscriptionPlan);
-        client.setVerificationText(request.verificationNotes());
         return clientRepository.save(client);
     }
 

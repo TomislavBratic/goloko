@@ -22,14 +22,14 @@ public class SubscriptionPlanController {
 
     @PostMapping
     public ResponseEntity<SubscriptionPlanResponse> create(@Valid @RequestBody CreateSubscriptionPlanRequest request){
-        SubscriptionPlan saved = service.create(request);
-        return ResponseEntity.created(URI.create("api/subscription_plan" + saved.getId()))
-                .body(SubscriptionPlanResponse.from(saved));
+        SubscriptionPlanResponse saved = service.create(request);
+        return ResponseEntity.created(URI.create("api/subscription_plan" + saved.id()))
+                .body(saved);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<SubscriptionPlanResponse> get(@PathVariable Long id)
     {
-        return ResponseEntity.of(service.get(id).map(SubscriptionPlanResponse::from));
+        return ResponseEntity.of(service.get(id));
     }
 }

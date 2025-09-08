@@ -22,15 +22,15 @@ public class UserController {
     }
     @PostMapping
     public ResponseEntity<UserResponse>createUser(@Valid @RequestBody CreateUserRequest request){
-        User saved = userService.create(request);
-        return ResponseEntity.created(URI.create("/api/users/" + saved.getId()))
-                .body(UserResponse.from(saved));
+        UserResponse saved = userService.create(request);
+        return ResponseEntity.created(URI.create("/api/users/" + saved.id()))
+                .body(saved);
 
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse>getUser(@PathVariable Long id)
     {
-        return ResponseEntity.of(userService.get(id).map(UserResponse::from));
+        return ResponseEntity.of(userService.get(id));
     }
 }

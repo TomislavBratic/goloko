@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public record ClientResponse(
         String businessName,
-        String verificationNotes,
+        String verificationText,
         String subscriptionPlanName,
         Integer maxLocations,
         Integer subscriptionDuration,

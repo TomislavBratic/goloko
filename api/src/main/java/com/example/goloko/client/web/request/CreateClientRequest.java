@@ -8,6 +8,6 @@ public record CreateClientRequest(
 @NotNull Long userId,
 @NotBlank @Size(max = 255) String businessName,
 Long subscriptionPlanId,
-@Size(max = 5000) String verificationNotes
+@Size(max = 5000) String verificationText
 ) {
 }
