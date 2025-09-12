@@ -1,6 +1,4 @@
-package com.example.goloko.subscriptionplan.web.response;
-
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
+package com.example.goloko.subscription_plan.web.response;
 
 import java.math.BigDecimal;
 
