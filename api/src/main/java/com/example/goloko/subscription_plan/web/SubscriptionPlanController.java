@@ -1,9 +1,8 @@
-package com.example.goloko.subscriptionplan.web;
+package com.example.goloko.subscription_plan.web;
 
-import com.example.goloko.subscriptionplan.application.SubscriptionPlanService;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
-import com.example.goloko.subscriptionplan.web.request.CreateSubscriptionPlanRequest;
-import com.example.goloko.subscriptionplan.web.response.SubscriptionPlanResponse;
+import com.example.goloko.subscription_plan.application.SubscriptionPlanService;
+import com.example.goloko.subscription_plan.web.request.CreateSubscriptionPlanRequest;
+import com.example.goloko.subscription_plan.web.response.SubscriptionPlanResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

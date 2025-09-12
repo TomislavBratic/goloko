@@ -6,8 +6,8 @@ import com.example.goloko.client.web.mapper.ClientMapper;
 import com.example.goloko.client.web.request.CreateClientRequest;
 import com.example.goloko.client.web.response.ClientResponse;
 import com.example.goloko.exceptions.NotFoundException;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlanRepository;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlan;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlanRepository;
 import com.example.goloko.user.domain.User;
 import com.example.goloko.user.domain.UserRepository;
 

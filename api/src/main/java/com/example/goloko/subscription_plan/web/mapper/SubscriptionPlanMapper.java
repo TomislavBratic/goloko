@@ -1,9 +1,8 @@
-package com.example.goloko.subscriptionplan.web.mapper;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
-import com.example.goloko.subscriptionplan.web.request.CreateSubscriptionPlanRequest;
-import com.example.goloko.subscriptionplan.web.response.SubscriptionPlanResponse;
+package com.example.goloko.subscription_plan.web.mapper;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlan;
+import com.example.goloko.subscription_plan.web.request.CreateSubscriptionPlanRequest;
+import com.example.goloko.subscription_plan.web.response.SubscriptionPlanResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 
 @Mapper(componentModel = "spring")

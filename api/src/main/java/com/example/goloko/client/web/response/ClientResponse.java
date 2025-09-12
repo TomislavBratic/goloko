@@ -1,8 +1,7 @@
 package com.example.goloko.client.web.response;
 
 import com.example.goloko.client.domain.Client;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
-import org.springframework.http.ResponseEntity;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlan;
 
 import java.math.BigDecimal;
 

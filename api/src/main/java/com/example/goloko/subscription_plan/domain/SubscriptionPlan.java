@@ -1,4 +1,4 @@
-package com.example.goloko.subscriptionplan.domain;
+package com.example.goloko.subscription_plan.domain;
 
 import com.example.goloko.client.domain.Client;
 import jakarta.persistence.*;
@@ -17,7 +17,9 @@ import java.util.Set;
 @Table(name = "subscription_plans")
 public class SubscriptionPlan {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @SequenceGenerator(name = "subscription_plans_seq", sequenceName = "subscription_plans_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "subscription_plans_seq")
     @EqualsAndHashCode.Include
     private Long id;
     @OneToMany(mappedBy = "subscriptionPlan",fetch = FetchType.LAZY)

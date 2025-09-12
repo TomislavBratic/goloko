@@ -1,10 +1,10 @@
-package com.example.goloko.subscriptionplan.application;
+package com.example.goloko.subscription_plan.application;
 
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlanRepository;
-import com.example.goloko.subscriptionplan.web.mapper.SubscriptionPlanMapper;
-import com.example.goloko.subscriptionplan.web.request.CreateSubscriptionPlanRequest;
-import com.example.goloko.subscriptionplan.web.response.SubscriptionPlanResponse;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlan;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlanRepository;
+import com.example.goloko.subscription_plan.web.mapper.SubscriptionPlanMapper;
+import com.example.goloko.subscription_plan.web.request.CreateSubscriptionPlanRequest;
+import com.example.goloko.subscription_plan.web.response.SubscriptionPlanResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
