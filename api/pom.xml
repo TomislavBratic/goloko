@@ -62,10 +62,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
+		<!-- Hibernate Spatial for PostGIS support -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-spatial</artifactId>
+			<version>6.6.8.Final</version>
+		</dependency>
+
+		<!-- JTS geometry library (needed by Hibernate Spatial) -->
+		<dependency>
+			<groupId>org.locationtech.jts</groupId>
+			<artifactId>jts-core</artifactId>
+			<version>1.19.0</version>
 		</dependency>
 
 		<dependency>
@@ -85,9 +99,9 @@
 		</dependency>
 
 		<dependency>
-		<groupId>org.flywaydb</groupId>
-		<artifactId>flyway-mysql</artifactId>
-	</dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
 	<dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
@@ -165,14 +179,6 @@
 					<!-- never enable clean by default; override per-profile if you want -->
 					<cleanDisabled>${flyway.cleanDisabled}</cleanDisabled>
 				</configuration>
-				<!-- The plugin needs the JDBC driver on *its* classpath too -->
-				<dependencies>
-					<dependency>
-						<groupId>org.mariadb.jdbc</groupId>
-						<artifactId>mariadb-java-client</artifactId>
-						<version>3.4.1</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

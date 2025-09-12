@@ -2,44 +2,37 @@ version: "3.8"
 
 services:
   db:
-    image: mariadb:10.10
+    image: postgis/postgis:15-3.3
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: goloko
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: goloko
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - persistent:/var/lib/mysql
-    networks:
-      - default
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "mariadb -uroot -proot -e 'SELECT 1 FROM mysql.db' || exit 1",
-        ]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d goloko"]
       interval: 10s
       retries: 10
       timeout: 5s
       start_period: 20s
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8000:80"
     depends_on:
       db:
         condition: service_healthy
-    ports:
-      - "8000:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
-      UPLOAD_LIMIT: 1280000000
-    networks:
-      - default
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin   # <-- persists settings
 
 volumes:
-  persistent:
-
-networks:
-  default:
+  postgres_data:
+  pgadmin_data:
