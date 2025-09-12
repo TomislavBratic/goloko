@@ -1,5 +1,5 @@
 package com.example.goloko.client.domain;
-import com.example.goloko.subscriptionplan.domain.SubscriptionPlan;
+import com.example.goloko.subscription_plan.domain.SubscriptionPlan;
 import com.example.goloko.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,9 @@ import java.time.Instant;
 @Entity
 @Table(name = "clients", uniqueConstraints =@UniqueConstraint(name = "uq_client_user_id",columnNames = "user_id"))
 public class Client {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @SequenceGenerator(name = "clients_seq", sequenceName = "clients_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "clients_seq")
     @EqualsAndHashCode.Include
     public Long id;
     @OneToOne(fetch = FetchType.LAZY, optional = false)

@@ -14,7 +14,9 @@ import java.time.Instant;
 @Table(name = "users", uniqueConstraints =@UniqueConstraint(name = "uq_users_email",columnNames = "email"))
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // for MariaDB insertion is Identity, that means hibernate doesn't know id before insertion, opposite of Sequence
+    @Id
+    @SequenceGenerator(name = "subscription_plans_seq", sequenceName = "subscription_plans_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "subscription_plans_seq")
     @EqualsAndHashCode.Include
     private Long id;
     @Column(nullable = false,length = 255)
