@@ -31,4 +31,4 @@ CREATE TABLE client_location_documents (
 );
 
 -- Indexes
-CREATE INDEX idx_client_location_documents_client_id ON client_location_documents (client_location_id);
+CREATE INDEX idx_client_location_documents_client_location_id ON client_location_documents (client_location_id);
