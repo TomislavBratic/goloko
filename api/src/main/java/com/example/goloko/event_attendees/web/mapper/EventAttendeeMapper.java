@@ -1,8 +1,8 @@
-package com.example.goloko.event_attendes.web.mapper;
+package com.example.goloko.event_attendees.web.mapper;
 
-import com.example.goloko.event_attendes.domain.EventAttendee;
-import com.example.goloko.event_attendes.web.request.CreateEventAttendeeRequest;
-import com.example.goloko.event_attendes.web.response.CreateEventAttendeeResponse;
+import com.example.goloko.event_attendees.domain.EventAttendee;
+import com.example.goloko.event_attendees.web.request.CreateEventAttendeeRequest;
+import com.example.goloko.event_attendees.web.response.CreateEventAttendeeResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

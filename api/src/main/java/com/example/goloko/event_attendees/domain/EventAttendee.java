@@ -1,14 +1,11 @@
-package com.example.goloko.event_attendes.domain;
+package com.example.goloko.event_attendees.domain;
 
-import com.example.goloko.client_location.domain.ClientLocation;
 import com.example.goloko.event.domain.Event;
 import com.example.goloko.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
-import org.locationtech.jts.geom.Point;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package com.example.goloko.event_attendes.domain;
+package com.example.goloko.event_attendees.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

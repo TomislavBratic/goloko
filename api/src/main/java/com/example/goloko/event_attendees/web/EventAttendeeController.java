@@ -1,8 +1,8 @@
-package com.example.goloko.event_attendes.web;
+package com.example.goloko.event_attendees.web;
 
-import com.example.goloko.event_attendes.application.EventAttendeeService;
-import com.example.goloko.event_attendes.web.request.CreateEventAttendeeRequest;
-import com.example.goloko.event_attendes.web.response.CreateEventAttendeeResponse;
+import com.example.goloko.event_attendees.application.EventAttendeeService;
+import com.example.goloko.event_attendees.web.request.CreateEventAttendeeRequest;
+import com.example.goloko.event_attendees.web.response.CreateEventAttendeeResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
