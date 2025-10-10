@@ -8,6 +8,18 @@ CREATE TABLE event_attendees (
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 
 
+    CONSTRAINT fk_event_attendees_event
+        FOREIGN KEY (event_id)
+        REFERENCES events(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_event_attendees_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
     CONSTRAINT chk_event_attendees_status CHECK (status IN ('ATTENDING','INTERESTED','DECLINED'))
 );
 
