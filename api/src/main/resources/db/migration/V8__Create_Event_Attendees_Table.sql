@@ -20,6 +20,8 @@ CREATE TABLE event_attendees (
         ON DELETE CASCADE
         ON UPDATE CASCADE,
 
+    CONSTRAINT uq_event_attendees UNIQUE (event_id, user_id),
+
     CONSTRAINT chk_event_attendees_status CHECK (status IN ('ATTENDING','INTERESTED','DECLINED'))
 );
 
