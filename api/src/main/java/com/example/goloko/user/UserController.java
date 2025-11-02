@@ -1,7 +1,6 @@
 package com.example.goloko.user;
 
 import com.example.goloko.user.application.UserService;
-import com.example.goloko.user.domain.User;
 import com.example.goloko.user.web.request.CreateUserRequest;
 import com.example.goloko.user.web.response.UserResponse;
 import jakarta.validation.Valid;
