@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import api from '../api/axios';
 
 const Register = () => {
-  const [fullName, setFullName] = useState('');
+const [firstName, setFirstName] = useState("");
+const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -14,19 +16,17 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!fullName || !email || !password || !repeatPassword)
-    {
+    if (!firstName || !lastName || !email || !password || !repeatPassword) {
       setError("All fields are required!");
       setLoading(false);
       return;
     }
 
-    if (!emailRegex.test(email))
-    {
+    if (!emailRegex.test(email)) {
       setError("Enter a valid email address!");
       setLoading(false);
       return;
@@ -45,14 +45,31 @@ const Register = () => {
     }
 
     setError('');
-    
-    console.log("Registering user:", { fullName, email, password });
-    setFullName('');
-    setEmail('');
-    setPassword('');
-    setRepeatPassword('');
-    setSuccess('Registration successful!');
-    setLoading(false);
+
+    try {
+      const response = await api.post("/api/auth/register", {
+        firstName,
+        lastName,
+        email,
+        password
+      });
+
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
+      setRepeatPassword('');
+      setSuccess('Registration successful!');
+      setLoading(false);
+    }
+   
+
+    catch (err) {
+      setError(err.response?.data?.message || "Registration failed.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
     return (
@@ -74,8 +91,9 @@ const Register = () => {
             {error && <p className='text-red-600 text-sm text-center mb-2'>{error}</p>}
             {success && <p className='text-green-600 text-sm text-center mb-2'>{success}</p>}
 
-            <input className={`p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 ${error && !fullName ? 'border-red-500' : 'focus:ring-blue-400'}`} placeholder='Full name' value={fullName} onChange={(e) => setFullName(e.target.value)}/>
-            <input className={`p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 ${error && (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) ? 'border-red-500' : 'focus:ring-blue-400'}`} placeholder="Username or Email"value={email} onChange={(e)=> setEmail(e.target.value)}/>
+            <input className={`p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 ${error && !firstName ? 'border-red-500' : 'focus:ring-blue-400'}`} placeholder='First name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+             <input className={`p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 ${error && !lastName ? 'border-red-500' : 'focus:ring-blue-400'}`} placeholder='Last name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+            <input className={`p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 ${error && (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) ? 'border-red-500' : 'focus:ring-blue-400'}`} placeholder="Email"value={email} onChange={(e)=> setEmail(e.target.value)}/>
             <div className="relative mb-4">
             <input
               type={showPassword ? 'text' : 'password'}
@@ -132,5 +150,5 @@ const Register = () => {
         </div>
        </div>
     );
-}
-export default Register;
+  }
+   export default Register;

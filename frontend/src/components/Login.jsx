@@ -1,8 +1,39 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../api/axios';
 
 const Login = () => {
-    return (
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => { 
+    try {
+      setError("");
+
+      const response =  await api.post("/api/auth/login", {
+        email,
+        password
+      });
+
+      localStorage.setItem("email", response.data.email);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
+
+      navigate("/");
+    }
+    catch (err) { 
+      setError("Invalid email or password");
+      console.error(err);
+    }
+
+  }
+
+  return (
      <div className="flex items-center justify-center min-h-screen  bg-[url('/background_pin.jpg')] bg-cover bg-center bg-no-repeat">
        <div className="w-full max-w-7xl bg-white shadow-lg flex rounded-xl overflow-hidden">
         <div className="w-1/2 hidden md:block">
@@ -18,11 +49,25 @@ const Login = () => {
             <img src="/login_sign_without_bg.png" className="w-48 h-48 hover:scale:110 transition:300"></img>
             </div>
 
-            <input className=" p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Username or Email"></input>
-            <input className="p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Password"></input>
+            <input
+              type="email"
+              className=" p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Username or Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              type="password"
+              className="p-3 mb-4 w-full border rounded bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}/>
+              
 
             <div className="flex justify-center">
-              <button className="w-1/5 p-3 mb-4 rounded bg-blue-950 text-white py-3 hover:bg-green-800 transition">Login</button>
+            <button
+              onClick={handleLogin}
+              className="w-1/5 p-3 mb-4 rounded bg-blue-950 text-white py-3 hover:bg-green-800 transition">Login</button>
               <label className="flex items-center ml-4  mb-4 gap-2 text-gray-500">
                  Remember me
                 <input className="ml-1 mt-1 scale-125" type="checkbox"/>

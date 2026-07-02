@@ -1,3 +1,4 @@
+import ProtectedRoute from './api/ProtectedRoute';
 import './App.css';
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
@@ -14,16 +15,14 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
       <div
       >
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path='/login' element={<Login />} />
            <Route path='/register' element={<Register />} />
         </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 
