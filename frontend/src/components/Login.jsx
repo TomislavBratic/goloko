@@ -3,6 +3,7 @@ import { faGoogle, faFacebook, faGithub, faTwitter } from '@fortawesome/free-bra
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
 
@@ -10,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async () => { 
     try {
@@ -20,10 +22,7 @@ const Login = () => {
         password
       });
 
-      localStorage.setItem("email", response.data.email);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", response.data.role);
-
+      login(response.data);
       navigate("/");
     }
     catch (err) { 
