@@ -18,15 +18,14 @@ public class UserService {
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper){
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
-@Transactional
-    public UserResponse create(CreateUserRequest request)
-    {
-        if(userRepository.existsByEmail(request.email()))
-        {
+
+    @Transactional
+    public UserResponse create(CreateUserRequest request) {
+        if (userRepository.existsByEmail(request.email())) {
             throw new IllegalArgumentException("Email already in use");
         }
         User user = userMapper.toEntity(request);
@@ -35,8 +34,9 @@ public class UserService {
         return userMapper.toUserResponse(user);
     }
 
-    public Optional<UserResponse> get(Long id)
-    {
-      return userRepository.findById(id).map(userMapper::toUserResponse);
+    public Optional<UserResponse> get(Long id) {
+        return userRepository.findById(id).map(userMapper::toUserResponse);
     }
+
+    public Optional<UserResponse> findByEmail(String email){ return userRepository.findByEmail(email).map(userMapper::toUserResponse);}
 }

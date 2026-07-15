@@ -7,12 +7,11 @@ import com.example.goloko.user.web.response.LoginResponse;
 import com.example.goloko.user.web.response.UserResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -38,4 +37,8 @@ public class AuthController {
         return ResponseEntity.created(URI.create("/api/auth/login" ))
                 .body(saved);
     }
+    @GetMapping("/me")
+        public ResponseEntity<Optional<UserResponse>> me(Authentication authentication){
+            return ResponseEntity.ok(userService.findByEmail(authentication.getName()));
+        }
 }
